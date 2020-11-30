@@ -91,13 +91,10 @@ module.exports = {
       },
       nuevoDato,
       async (err, result) => {
-        client.close();
         if (err) throw err;
         console.log("Dato actualizado");
-        const actualizado = await db
-          .collection("paciente")
-          .find({ _id: ObjectID(dato) })
-          .toArray();
+        const actualizado = await db.collection("paciente").find({ _id: ObjectID(dato) }).toArray();
+        client.close();
         res.json(actualizado);
       }
     );

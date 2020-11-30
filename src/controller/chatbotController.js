@@ -215,7 +215,7 @@ async function getChatbot(req, res) {
 								if (band) {
 									const npregunta = {
 										"consulta": entrada,
-										"enfermedad": "Cataratas",
+										"enfermedad": "CATARATAS",
 										"intencion": "Consulta Malestares",
 										"estado": "Nuevo",
 										"respuestas": []

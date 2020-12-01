@@ -17,6 +17,8 @@ module.exports = {
       });
   },
   addPacients: async (req, res) => {
+    const paciente = req.body;
+
     const client = await getPacienteClient();
     const db = client.db(dbName); // obtenemos la conexión
     //await db.collection('cultura').save(cultura);

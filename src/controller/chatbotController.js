@@ -88,7 +88,9 @@ async function getChatbot(req, res) {
 			//console.log("cadena limpiada", textMessage)
 
 			//obtengo la enfermedad del paciente
-			let en = decoded.enfermedad.toUpperCase();
+			//let en = decoded.enfermedad.toUpperCase();
+			let en = limpiarcadena(decoded.enfermedad).toUpperCase();
+			//console.log("---------------------", en)
 
 
 			//------------------MANEJO DEL HOLA, SI Y NO EN EL CHATBOT 
@@ -162,12 +164,16 @@ async function getChatbot(req, res) {
 								"dolor en el ojo", "dolor de ojo", "incomodidad en mi frente", "incomodidad en la frente", "frente con incomodidad", 
 								"incomodidad en el ojo", "ojo incomodo", "incomodidad en mi ojo", "malestar en mi frente", "malestar en la frente", "malestar en el ojo", "malestar en mi ojo",
 								"veo doble", "doble vision", "veo doble en un ojo", "doble vision en un ojo", "estoy viendo doble en un ojo", "doble", "ojo", "vision doble en un solo ojo",
-								"en un solo ojo tengo doble vision", "no puedo leer", "no leo bien", "leo mal", "no reconozco caras", "caras no reconozco", "veo mal las caras"]
+								"en un solo ojo tengo doble vision", "no puedo leer", "no leo bien", "leo mal", "no reconozco caras", "caras no reconozco", "veo mal las caras", "siento dolor en el ojo",
+								"dolor en mi ojo", "ojo con dolor", "tengo dolor en el ojo", "tengo ojo con dolor", "tengo dolores en los ojos", "ojos con dolores", "ojos con dolor", "dolor en los ojos", 
+								"ardor en los ojos", "ojos con ardor", "ardor", "ardor en el ojo", "ojo con ardor", "me arden los ojos", "me arde el ojo", "siento ardor en el ojo", 
+								"siento ardor en los ojos", "ojos resecos", "secos", "ojos secos", "tengo ojos secos", "tengo seco el ojo", "ojo seco", "tengo secos los ojos", 
+								"mi ojo esta seco", "mis ojos estan secos", "mi ojo esta medio seco", "mis ojos estan secos"]
 				var band = false;
 				var frase = 'Discomfort Intent' + ' - ' + en
 				var variable = []
 
-				if (en == 'CATARATAS') {
+				if (en == 'AMETROPIAS') {
 
 					frase = 'Discomfort Intent'
 
@@ -215,7 +221,7 @@ async function getChatbot(req, res) {
 								if (band) {
 									const npregunta = {
 										"consulta": entrada,
-										"enfermedad": "CATARATAS",
+										"enfermedad": "AMETROPIAS",
 										"intencion": "Consulta Malestares",
 										"estado": "Nuevo",
 										"respuestas": []

@@ -173,7 +173,7 @@ async function getChatbot(req, res) {
 				var frase = 'Discomfort Intent' + ' - ' + en
 				var variable = []
 
-				if (en == 'AMETROPIAS') {
+				if (en == 'POSTOPERATORIO') {
 
 					frase = 'Discomfort Intent'
 
@@ -221,7 +221,7 @@ async function getChatbot(req, res) {
 								if (band) {
 									const npregunta = {
 										"consulta": entrada,
-										"enfermedad": "AMETROPIAS",
+										"enfermedad": "POSTOPERATORIO",
 										"intencion": "Consulta Malestares",
 										"estado": "Nuevo",
 										"respuestas": []

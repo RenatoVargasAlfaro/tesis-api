@@ -18,6 +18,8 @@ router.put('/update/:id', authentication.isAuth, controller.updateQuestion);
 
 router.get('/edit/:id', authentication.isAuth, controller.getQuestionbyId);
 
+router.get('/random/:dato', authentication.isAuth, controller.getRandom);
+
 
 /*
 router.post('/add', async (req, res) => {

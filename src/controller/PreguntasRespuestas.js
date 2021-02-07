@@ -298,5 +298,34 @@ module.exports = {
             console.log("Dato por id obtenido");
             res.json(result);
         });
+    },
+    getRandom: async (req, res) => {
+        
+        const client = await getPreguntaClient();
+        const db = client.db(dbName2); // obtenemos la conexión
+        const dato = req.params.dato;
+        
+        //const db = await connection(); // obtenemos la conexión
+        //var docs = await db.collection('PregRpta').find().toArray();
+        //res.json(docs);
+        const pgtas1 = await db.collection('PregRpta').find().toArray();
+        const pgtas2 = await db.collection('temporal').find().toArray();
+        client.close();
+        var arreglo = pgtas1.concat(pgtas2);
+        var textos = []
+        var seleccion = []
+
+        arreglo.forEach((elemento, index) => {
+            textos.push(elemento.consulta)
+        });
+
+        for (i=0; i<dato; i++) {
+            var aleatorio = Math.floor(Math.random()*(textos.length));
+            seleccion.push(textos[aleatorio]);
+            textos.splice(aleatorio, 1);
+        }
+
+        res.json(seleccion)
     }
+
 }
